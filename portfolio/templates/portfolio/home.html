@@ -1,15 +1,39 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'portfolio/base.html' %}
+{% block body %}
+
+    <div id="about" class="section py-4 my-5">
+		<div class="container">
+			<div class="row py-5">
+                <div class="col-md-7 pt-4">
+					<h1 style="font-family: 'Bebas Neue', cursive;font-size: 70px; ">HELLO I'M</h1>
+            <h1 style="font-family: 'Bebas Neue', cursive;font-size: 70px; ">SOHANUR RAHMAN</h1>
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Voluptate, incidunt sapiente exercitationem cupiditate quam
+              reprehenderit tempore corrupti veritatis dolores debitis sed. Quia
+              quidem magni maxime autem commodi sed perspiciatis? Magnam?
+            </p>
+            <div class="button py-4">
+                <a style="border-radius: 30px;" class="btn btn-primary py-2 px-4" href="#">HIRE ME</a>
+                <a style="border-radius: 30px;" class="btn btn-warning py-2 px-4 mx-2" href="#">Cv/Resume</a>
+            </div>
+
+				</div>
+				<div class="col-md-5">
+                    {% load static %}
+					<img class="aboutImage ms-auto" src="{% static 'portfolio/my-bgp.png' %}" width="400px">
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
     <h1>Hello home page</h1>
     <a href="{% url 'blog:all_blogs' %}">Blog</a>
     <br>
-    <img src="{% static 'portfolio/passport.jpg' %}" alt="" width="500px">
+{#    {% load static %}#}
+{#    <img src=" " alt="" width="500px">#}
     <br>
     {% for project in projects  %}
         <img width="300px" src="{{ project.image.url }}" alt="">
@@ -19,5 +43,5 @@
         <a href="{{ project.url }}">Link</a>
         {% endif %}
     {% endfor %}
-</body>
-</html>
+
+{% endblock %}

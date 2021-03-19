@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'portfolio/base.html' %}
+{% block body %}
     <h2>Blog list</h2>
     <h4>You have written {{ blogs_count }} blog{{ blogs.count|pluralize }}.</h4>
     {% for blog in blogs  %}
@@ -13,5 +10,5 @@
         <h4>{{ blog.date|date:'M d Y'| upper }}</h4>
         <h3>{{ blog.desc| truncatechars:100 }}</h3>
     {% endfor %}
-</body>
-</html>
+
+{% endblock %}
