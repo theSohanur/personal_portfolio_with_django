@@ -8,7 +8,7 @@
     <h2>Blog list</h2>
     {% for blog in blogs  %}
 {#        <img width="300px" src="{{ project.image.url }}" alt="">#}
-        <h1>{{ blog.title }}</h1>
+        <h1><a href="{% url 'blog:detail' blog.id %}">{{ blog.title }}</a></h1>
         <h4>{{ blog.date }}</h4>
         <h3>{{ blog.desc }}</h3>
     {% endfor %}
