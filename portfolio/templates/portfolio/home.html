@@ -7,6 +7,8 @@
 </head>
 <body>
     <h1>Hello home page</h1>
+    <a href="{% url 'blog:all_blogs' %}">Blog</a>
+    <br>
     <img src="{% static 'portfolio/passport.jpg' %}" alt="" width="500px">
     <br>
     {% for project in projects  %}
