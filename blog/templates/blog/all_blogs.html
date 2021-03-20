@@ -1,14 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
 {% extends 'portfolio/base.html' %}
 {% block body %}
-    <h2>Blog list</h2>
-    <h4>You have written {{ blogs_count }} blog{{ blogs.count|pluralize }}.</h4>
-    {% for blog in blogs  %}
+
+    <section class="py-5">
+    <h1 style="font-family: 'Bebas Neue', cursive;font-size: 60px; " class="text-center my-5">All Blogs</h1>
+    <h4 class="text-center">You have written {{ blogs_count }} blog{{ blogs.count|pluralize }}.</h4>
+        <div class="container">
+            <div class="d-flex justify-content-around">
+                {% for blog in blogs   %}
+                    <div class="card" style="width: 18rem;">
+                      <div class="card-body">
+                          <h5 class="card-title"><a href="{% url 'blog:detail' blog.id %}">{{ blog.title }}</a></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ blog.date|date:'M d Y'| upper }}</h6>
+                        <p class="card-text">{{ blog.desc|truncatechars:100  }}</p>
+                        <a href="{% url 'blog:detail' blog.id %}" class="btn btn-primary">Show Details</a>
+                      </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+{#    <h2>Blog list</h2>#}
+{#    <h4>You have written {{ blogs_count }} blog{{ blogs.count|pluralize }}.</h4>#}
+{#    {% for blog in blogs  %}#}
 {#        <img width="300px" src="{{ project.image.url }}" alt="">#}
-        <h1><a href="{% url 'blog:detail' blog.id %}">{{ blog.title }}</a></h1>
-        <h4>{{ blog.date|date:'M d Y'| upper }}</h4>
-        <h3>{{ blog.desc| truncatechars:100 }}</h3>
-    {% endfor %}
+{#        <h1><a href="{% url 'blog:detail' blog.id %}">{{ blog.title }}</a></h1>#}
+{#        <h4>{{ blog.date|date:'M d Y'| upper }}</h4>#}
+{#        <h3>{{ blog.desc| truncatechars:100 }}</h3>#}
+{#    {% endfor %}#}
 
 {% endblock %}

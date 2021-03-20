@@ -28,20 +28,26 @@
 	</div>
 
 
+    <section class="bg-light py-5">
+    <h1 style="font-family: 'Bebas Neue', cursive;font-size: 60px; " class="text-center my-5">Portfolio</h1>
+        <div class="container">
+            <div class="d-flex justify-content-around">
+                {% for project in projects  %}
+                    <div class="card" style="width: 18rem;">
+                      <img src="{{ project.image.url }}" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">{{ project.title }}</h5>
+                        <p class="card-text">{{ project.desc }}</p>
+                        {% if project.url %}
+                        <a href="{{ project.url }}" class="btn btn-primary">View project</a>
+                        {% endif %}
+                      </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
 
-    <h1>Hello home page</h1>
-    <a href="{% url 'blog:all_blogs' %}">Blog</a>
-    <br>
-{#    {% load static %}#}
-{#    <img src=" " alt="" width="500px">#}
-    <br>
-    {% for project in projects  %}
-        <img width="300px" src="{{ project.image.url }}" alt="">
-        <h1>{{ project.title }}</h1>
-        <h3>{{ project.desc }}</h3>
-        {% if project.url %}
-        <a href="{{ project.url }}">Link</a>
-        {% endif %}
-    {% endfor %}
+
 
 {% endblock %}
